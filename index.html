@@ -14,7 +14,7 @@ function clearStatus() { status = ""; }
 function promptInputs() { status = "Number of User Inputs"; }
 function promptOutputs() { status = "Number of User Outputs"; }
 function promptInquiries() { status = "Number of User Inquiries"; }
-function promptFiles() { status = "Number of Files"; }
+function promptTables() { status = "Number of Tables"; }
 function promptInterfaces() { status = "Number of External Interfaces"; }
 
 // In JavaScript 1.1, parseInt returns NaN (recognizable via isNaN() for non-integers. But JavaScript 1.0
@@ -27,7 +27,7 @@ function isInt(string) {
 } // isInt()
 
 // Three tests:
-// 1) userInputs, userOutputs, userInquiries, numberFiles, and externalInterfaces are an integer.
+// 1) userInputs, userOutputs, userInquiries, numberTables, and externalInterfaces are an integer.
 // 2) Weighting factor is not missing.
 // 3) Rating for each factor should be in a range from 0 to 5.
 // If any of the tests fails, calculation is canceled.
@@ -48,9 +48,9 @@ function checkDataEntry() {
     alert("Number of user inquiries must be an integer.\n '" + userInquiries.value + "' is not.");
     return(false);
   } //if
-  var numberFiles = document.mainForm.numberFiles;
-  if (!isInt(numberFiles.value) && numberFiles.value!=0) {
-    alert("Number of files must be an integer.\n '" + numberFiles.value + "' is not.");
+  var numberTables = document.mainForm.numberTables;
+  if (!isInt(numberTables.value) && numberTables.value!=0) {
+    alert("Number of Tables must be an integer.\n '" + numberTables.value + "' is not.");
     return(false);
   } //if
   var externalInterfaces = document.mainForm.externalInterfaces;
@@ -87,9 +87,9 @@ function calculate() {
     if (mainForm.userInquiriesWeight[2].checked) mainForm.T3.value = 6 * mainForm.userInquiries.value ;
     countTotal = countTotal + parseInt(mainForm.T3.value);
     
-    if (mainForm.numberFilesWeight[0].checked) mainForm.T4.value = 7 * mainForm.numberFiles.value ;
-    if (mainForm.numberFilesWeight[1].checked) mainForm.T4.value = 10 * mainForm.numberFiles.value ;    
-    if (mainForm.numberFilesWeight[2].checked) mainForm.T4.value = 15 * mainForm.numberFiles.value ;
+    if (mainForm.numberTablesWeight[0].checked) mainForm.T4.value = 7 * mainForm.numberTables.value ;
+    if (mainForm.numberTablesWeight[1].checked) mainForm.T4.value = 10 * mainForm.numberTables.value ;    
+    if (mainForm.numberTablesWeight[2].checked) mainForm.T4.value = 15 * mainForm.numberTables.value ;
     countTotal = countTotal + parseInt(mainForm.T4.value);
 
     if (mainForm.externalInterfacesWeight[0].checked) mainForm.T5.value = 5 * mainForm.externalInterfaces.value ;
@@ -117,7 +117,7 @@ function generateInfo(mode)
 "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes, copyhistory=no");
     if
 (mode==3) infoWindow3=window.open("userinquiries.html","info3Window", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes, copyhistory=no");
-    if (mode==4) infoWindow3=window.open("numberfiles.html","info4Window",
+    if (mode==4) infoWindow3=window.open("numberTables.html","info4Window",
 "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes, copyhistory=no");
     if
 (mode==5) infoWindow3=window.open("externalinterfaces.html","info5Window", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes, copyhistory=no");
@@ -193,12 +193,12 @@ FP data is used in two ways:</p>
     <td width="52%" height="27" align="right">= <input name="T3" disabled="" size="6" value="0">  </td>
   </tr>
   <tr>
-    <td width="25%" height="27" align="left"><input type="button" value="     Number of Files " onclick="generateInfo(4)"></td>
-    <td width="21%" height="27"><input type="text" name="numberFiles" onfocus="promptFiles()" onblur="clearStatus()" size="6" value="0">
+    <td width="25%" height="27" align="left"><input type="button" value="     Number of Tables " onclick="generateInfo(4)"></td>
+    <td width="21%" height="27"><input type="text" name="numberTables" onfocus="promptTables()" onblur="clearStatus()" size="6" value="0">
       x  </td>
-    <td width="11%" align="center" height="27"><input type="radio" value="7" name="numberFilesWeight">7</td>
-    <td width="11%" align="center" height="27"><input type="radio" value="10" name="numberFilesWeight" checked="">10</td>
-    <td width="11%" align="center" height="27"><input type="radio" value="15" name="numberFilesWeight">15</td>
+    <td width="11%" align="center" height="27"><input type="radio" value="7" name="numberTablesWeight">7</td>
+    <td width="11%" align="center" height="27"><input type="radio" value="10" name="numberTablesWeight" checked="">10</td>
+    <td width="11%" align="center" height="27"><input type="radio" value="15" name="numberTablesWeight">15</td>
     <td width="52%" height="27" align="right">= <input name="T4" disabled="" size="6" value="0">  </td>
   </tr>
   <tr>
@@ -257,11 +257,11 @@ measurement parameters will be available.</p>
     <td width="11%" align="right"><input name="F1" size="1" value="0">  </td>
   </tr>
   <tr>
-    <td width="89%">F8.&nbsp;&nbsp; Are the master files updated on-line?</td>
+    <td width="89%">F8.&nbsp;&nbsp; Are the master Tables updated on-line?</td>
     <td width="11%" align="right"><input name="F1" size="1" value="0">  </td>
   </tr>
   <tr>
-    <td width="89%">F9.&nbsp; Are the inputs, outputs, files or inquiries
+    <td width="89%">F9.&nbsp; Are the inputs, outputs, Tables or inquiries
       complex?</td>
     <td width="11%" align="right"><input name="F1" size="1" value="0">  </td>
   </tr>
